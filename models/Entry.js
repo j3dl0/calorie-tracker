@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 //Collection in the database
-const EntrySchems = new mongoose.Schema({
+const EntrySchema = new mongoose.Schema({
 
     food: String,
     calories: Number,

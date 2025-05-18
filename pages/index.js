@@ -4,6 +4,9 @@ export default function Home() {
   const [entries, setEntries] = useState([]);
   const [food, setFood] = useState('');
   const [calories, setCalories] = useState('');
+  const [editingId, setEditingId] = useState(null);
+  const [editFood, setEditFood] = useState('');
+  const [editCalories, setEditCalories] = useState('');
 
   useEffect(() => {
     fetchEntries();
@@ -32,11 +35,21 @@ export default function Home() {
     fetchEntries();
   }
 
+  async function updateEntry(id) {
+    await fetch(`/api/entries/${id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ food: editFood, calories: parseInt(editCalories) }),
+    });
+    setEditingId(null);
+    fetchEntries();
+  }
+
   const totalCalories = entries.reduce((sum, e) => sum + e.calories, 0);
 
   return (
     <main style={{ padding: 20 }}>
-      <h1>Calorie Tracker</h1>
+      <h1>🥗 Calorie Tracker</h1>
       <form onSubmit={addEntry}>
         <input value={food} onChange={(e) => setFood(e.target.value)} placeholder="Food" required />
         <input value={calories} onChange={(e) => setCalories(e.target.value)} type="number" placeholder="Calories" required />
@@ -48,8 +61,24 @@ export default function Home() {
       <ul>
         {entries.map((e) => (
           <li key={e._id}>
-            {e.food} - {e.calories} cal
-            <button onClick={() => deleteEntry(e._id)}>❌</button>
+            {editingId === e._id ? (
+              <>
+                <input value={editFood} onChange={(e) => setEditFood(e.target.value)} />
+                <input type="number" value={editCalories} onChange={(e) => setEditCalories(e.target.value)} />
+                <button onClick={() => updateEntry(e._id)}>✅</button>
+                <button onClick={() => setEditingId(null)}>❌</button>
+              </>
+            ) : (
+              <>
+                {e.food} - {e.calories} cal
+                <button onClick={() => {
+                  setEditingId(e._id);
+                  setEditFood(e.food);
+                  setEditCalories(e.calories);
+                }}>✏️</button>
+                <button onClick={() => deleteEntry(e._id)}>🗑️</button>
+              </>
+            )}
           </li>
         ))}
       </ul>

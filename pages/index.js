@@ -63,14 +63,19 @@ async function updateEntry(id) {
 
   return (
     <main style={{ padding: 20 }}>
+      <div className = "background-wrapper"> 
+        <div className = "content">
       <h1>🥗 Calorie Tracker</h1>
       <form onSubmit={addEntry}>
         <input value={food} onChange={(e) => setFood(e.target.value)} placeholder="Food" required />
         <input value={calories} onChange={(e) => setCalories(e.target.value)} type="number" placeholder="Calories" required />
         <button type="submit">Add</button>
+      
       </form>
 
+      
       <h2>Total Calories: {totalCalories}</h2>
+
 
       <ul>
         {entries.map((e) => (
@@ -95,7 +100,9 @@ async function updateEntry(id) {
             )}
           </li>
         ))}
-      </ul>
+      </ul>     
+      </div>
+      </div>
     </main>
-  );
+  ); 
 }

@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+//Collection in the database
 const EntrySchems = new mongoose.Schema({
 
     food: String,

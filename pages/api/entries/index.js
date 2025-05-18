@@ -6,7 +6,7 @@ export default async function handler(req, res) {
     await connectToDatabase();
 
     if(req.method === 'GET'){
-        const entries = await Entry.find().sort({ createdAt: -1 }); //assorts entries from new -> old
+        const entries = await Entry.find().sort({ createdAt: -1 }); //sorts entries from new -> old
         res.status(200).json(entries);
     }
 //POST

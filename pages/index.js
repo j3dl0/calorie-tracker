@@ -35,15 +35,29 @@ export default function Home() {
     fetchEntries();
   }
 
-  async function updateEntry(id) {
-    await fetch(`/api/entries/${id}`, {
+async function updateEntry(id) {
+  try {
+    const res = await fetch(`/api/entries/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ food: editFood, calories: parseInt(editCalories) }),
     });
+
+    const result = await res.json();
+    console.log('Update result:', result);
+
+    if (!res.ok) {
+      alert(`Failed to update: ${result.error}`);
+      return;
+    }
+
     setEditingId(null);
     fetchEntries();
+  } catch (err) {
+    console.error('Update request failed:', err);
   }
+}
+
 
   const totalCalories = entries.reduce((sum, e) => sum + e.calories, 0);
 

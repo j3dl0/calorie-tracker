@@ -11,8 +11,8 @@ export default async function handler(req, res) {
     }
 //POST
     if (req.method === 'POST') {
-        const { food, calories } = req.body;
-        const newEntry = await Entry.create({ food, calories });    //creates entries in db
+        const { food, calories, category, date } = req.body;
+        const newEntry = await Entry.create({ food, calories, category, date });    //creates entries in db
         res.status(201).json(newEntry);
     }
 }

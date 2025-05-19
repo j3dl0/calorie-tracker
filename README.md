@@ -1,36 +1,27 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Calorie Tracker
 
-## Getting Started
+A full-stack web application to track food intake and calorie count per meal. Built using Next.js, MongoDB, and Express-style API routes. Users can log meals, categorize them, track the date, and manage their entries with the implementation of CRUD operations.
 
-First, run the development server:
+Below is the installation and setup instructions.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Clone the Repo
+>> git clone https://github.com/j3dl0/calorie-tracker/tree/main
+>> cd calorie-tracker
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Install Dependencies
+>> npm install
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Create a .env.local file (connects to a database)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+MONGODB_URI=your_mongodb_connection_string
+(You can get this URI from MongoDB Atlas once you create your database)
 
-## Learn More
+Start your development server
+>> npm run dev
 
-To learn more about Next.js, take a look at the following resources:
+Visit http://localhost:3000 to view the app.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Live Deployment Link
+https://vercel.com/j3dl0s-projects/calorie-tracker/4aT5LoUmM7SWLuqti3i8PWMtaGQq
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+I came up with this simple project idea with the summer coming up and always seeing people posting to get that "summer body". I faced multiple bugs and issues like not handling errors which crashed my app a few times. I liked using the MongoDB. It was easy to use and guided me on how to implement it in my app. I used ChatGPT to help me fix and locate the errors and to also help stylize. It was honestly my first time using ChatGPT and now I know why it is so popular. I decided to add an  overlay in between to help with a more cleaner design. However, I could not figure out how to remove the edge borders so it was a seamless overlay which is annoying. Other than that, I'm pleased with the overall CSS implementations I made. I also decided to add a "meal type" and "date logged" section to add more clarity. If I were to improve this  app, I would probably add a filter where you can search by date or meal type.
